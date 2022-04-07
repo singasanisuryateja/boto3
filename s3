@@ -14,3 +14,27 @@ response = s3_client.create_bucket(
     },
 )    
 print(response)
+
+
+#upload a file to s3 bucket
+
+response = s3_client.put_object(
+    
+    Body=open("practic.py","r").read(),
+    Bucket='aws-s3-suryateja',
+    Key='practic.py',
+)
+print(response)
+
+
+# Download a file to local system
+response = s3_client.get_object(
+    Bucket='aws-s3-suryateja',
+    
+    Key='practic.modiefy.py',
+    Range='string',
+)
+data = response.get("Body").read().decode()
+file = open("practic.modiefy.py", "w")
+file.writelines(data)
+file.close()
