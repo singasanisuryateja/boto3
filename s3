@@ -1,0 +1,16 @@
+import boto3
+
+#create an object to s3 service
+s3_client = boto3.client('s3',
+    aws_access_key_id="AKIAX6IJWFU7PFYMOYGJ",
+    aws_secret_access_key="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")
+
+
+# creation of bucket
+response = s3_client.create_bucket(
+    Bucket='aws-s3-suryateja',
+    CreateBucketConfiguration={
+        'LocationConstraint': 'ap-south-1'
+    },
+)    
+print(response)
